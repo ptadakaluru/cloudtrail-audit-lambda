@@ -100,7 +100,10 @@ aws s3 cp requests-layer.zip s3://$BUCKET_NAME/cloudtrail-audit/
 cd cloudtrail-audit-lambda
 aws cloudformation deploy   --template-file template.yaml   --stack-name cloudtrail-audit-lambda-stack   --capabilities CAPABILITY_NAMED_IAM   --parameter-overrides     CodeS3Bucket=$BUCKET_NAME     CodeS3Key=cloudtrail-audit/lambda_function.zip     LayerS3Bucket=$BUCKET_NAME     LayerS3Key=cloudtrail-audit/requests-layer.zip     WhitelistedRegions="us-east-1,us-west-2"     HoursBack=6     ScheduleRateMinutes=60     NotificationEmail=your@email.com
 
-[ update the email address to which you are looking forward to receive email alerts ] 
+[ update the email address to which you are looking forward to receive email alerts ]
+[ update the ScheduleRateMinutes as per your requirements ]
+[ update the WhitelistedRegions as per your requirements. You can list multiple ]
+[ update the HoursBack as per your requirement. This is the time period of cloudtrial logs to search ]
 ```
 
 ## 11. Validate Deployed Resources
